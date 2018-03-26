@@ -14,8 +14,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private ListView simpleLV;
     public static final String TAG = MainActivity.class.getSimpleName();
+    private ListView simpleLV;
     private DataList data;
     private DataListViewAdapter adapter;
 

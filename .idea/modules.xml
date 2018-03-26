@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android-code-snippets.iml" filepath="$PROJECT_DIR$/Android-code-snippets.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fileexplorer/fileexplorer.iml" filepath="$PROJECT_DIR$/fileexplorer/fileexplorer.iml" />
       <module fileurl="file://$PROJECT_DIR$/listview/listview.iml" filepath="$PROJECT_DIR$/listview/listview.iml" />
       <module fileurl="file://$PROJECT_DIR$/noeditableedittext/noeditableedittext.iml" filepath="$PROJECT_DIR$/noeditableedittext/noeditableedittext.iml" />
       <module fileurl="file://$PROJECT_DIR$/texttospeech/texttospeech.iml" filepath="$PROJECT_DIR$/texttospeech/texttospeech.iml" />
