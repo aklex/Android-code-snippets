@@ -1,1 +1,1 @@
-include ':app', ':texttospeech', ':noeditableedittext', ':listview', ':fileexplorer'
+include ':app', ':texttospeech', ':noeditableedittext', ':listview', ':fileexplorer', ':zip'
