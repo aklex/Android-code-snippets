@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -34,7 +35,7 @@ public class Decompress {
         }
     }*/
 
-    public static void unzip(String zipFile, String location) {
+    /*public static void unzip(String zipFile, String location) {
         try {
             FileInputStream fin = new FileInputStream(zipFile);
             unzip(fin, location);
@@ -42,13 +43,15 @@ public class Decompress {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
-    private static void unzip(InputStream stream, String destination) {
+    public static void unzip(String zipFile, String destination) {
         dirChecker(destination, "");
-        byte[] buffer = new byte[BUFFER_SIZE];
+        FileInputStream fin = null;
+        ZipInputStream zin = null;
         try {
-            ZipInputStream zin = new ZipInputStream(stream);
+            fin = new FileInputStream(zipFile);
+            zin = new ZipInputStream(fin);
             ZipEntry ze = null;
 
             while ((ze = zin.getNextEntry()) != null) {
@@ -57,24 +60,91 @@ public class Decompress {
                 if (ze.isDirectory()) {
                     dirChecker(destination, ze.getName());
                 } else {
-                    File f = new File(destination + ze.getName());
-                    if (!f.exists()) {
-                        FileOutputStream fout = new FileOutputStream(destination + ze.getName());
-                        int count;
-                        while ((count = zin.read(buffer)) != -1) {
-                            fout.write(buffer, 0, count);
+                    File file = new File(destination + ze.getName());
+                    if (!file.exists()) {
+                        writeEntryToFile(file, zin);
+                    }else {
+                        Log.d(TAG, "Override existed file? Check yes or no");
+                        if (clearFile(file)){
+                            writeEntryToFile(file, zin);
                         }
-                        zin.closeEntry();
-                        fout.close();
                     }
                 }
 
             }
-            zin.close();
-        } catch (Exception e) {
-            Log.e(TAG, "unzip", e);
+        } catch (FileNotFoundException e) {
+            Log.e(TAG, "File not found", e);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (zin != null){
+                try {
+                    zin.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (fin != null){
+                try {
+                    fin.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
+    }
+
+    private static void writeEntryToFile(File file, ZipInputStream zin) {
+        byte[] buffer = new byte[BUFFER_SIZE];
+        FileOutputStream fout = null;
+        try {
+            fout = new FileOutputStream(file);
+
+            int count;
+            while ((count = zin.read(buffer)) != -1) {
+                fout.write(buffer, 0, count);
+
+            }
+            zin.closeEntry();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if (fout != null) {
+                try {
+                    fout.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static boolean clearFile(File file){
+        FileOutputStream fout = null;
+        try {
+            fout = new FileOutputStream(file);
+            fout.write("".getBytes());
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+            if (fout != null) {
+                try {
+                    fout.close();
+                    Log.d(TAG, "Clear file" + file.getAbsolutePath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return true;
     }
 
     public static void zip(String[] files, String zipFileName){
@@ -110,8 +180,7 @@ public class Decompress {
         File f = new File(destination + dir);
 
         if (!f.isDirectory()) {
-            boolean success = f.mkdirs();
-            if (!success) {
+            if (f.mkdirs()) {
                 Log.w(TAG, "Failed to create folder " + f.getName());
             }
         }

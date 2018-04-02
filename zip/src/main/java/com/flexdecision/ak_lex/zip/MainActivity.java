@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, dir.getAbsolutePath());
         String file = dir.getAbsolutePath() + "/imagesqwe.zip";
         String destination  = dir.getAbsolutePath() + "/unzipped/";
-        //Decompress.unzip(file, destination);
+        Decompress.unzip(file, destination);
 
-        String[] filesStr = { dir.getAbsolutePath() + "/Bit text.txt", dir.getAbsolutePath() + "/parcel.png"};
+        /*String[] filesStr = { dir.getAbsolutePath() + "/Bit text.txt", dir.getAbsolutePath() + "/parcel.png"};
         String destFile = dir.getAbsolutePath() + "/dest.zip";
-        Decompress.zip(filesStr, destFile);
+        Decompress.zip(filesStr, destFile);*/
     }
 
 
