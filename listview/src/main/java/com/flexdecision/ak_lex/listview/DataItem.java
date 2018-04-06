@@ -4,12 +4,12 @@ package com.flexdecision.ak_lex.listview;
  * Created by a_Lex on 3/22/2018.
  */
 
-public class Data {
+public class DataItem {
     private String headline;
     private String description;
     private int image;
 
-    public Data(String headline, String description, int image) {
+    public DataItem(String headline, String description, int image) {
         this.headline = headline;
         this.description = description;
         this.image = image;
@@ -40,7 +40,7 @@ public class Data {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Data data = (Data) o;
+        DataItem data = (DataItem) o;
 
         if (image != data.image) return false;
         if (headline != null ? !headline.equals(data.headline) : data.headline != null)

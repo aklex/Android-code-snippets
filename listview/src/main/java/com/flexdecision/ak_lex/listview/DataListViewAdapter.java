@@ -63,7 +63,7 @@ public class DataListViewAdapter extends BaseAdapter {
             //itemView.setOnClickListener(v-> showToast(dataItem.getHeadline()));
         }
         ViewHolder holder = (ViewHolder) itemView.getTag();
-        Data dataItem = items.getData(position);
+        DataItem dataItem = items.getData(position);
         holder.headlineTV.setText(dataItem.getHeadline());
         holder.descriptionTV.setText(dataItem.getDescription());
         holder.androidItemIV.setImageResource(dataItem.getImage());

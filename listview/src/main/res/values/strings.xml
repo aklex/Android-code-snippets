@@ -8,6 +8,7 @@
         <item>Eclair</item>
         <item>Froyo</item>
         <item>Gingerbread</item>
+        <item>Honeycomb</item>
         <item>Ice Cream Sandwich</item>
         <item>Jelly Bean</item>
         <item>KitKat</item>
@@ -24,7 +25,8 @@
         <item>Android 1.6 APIs</item>
         <item>Android 2.0 – 2.1 APIs</item>
         <item>Android 2.2 – 2.2.3 APIs</item>
-        <item>Android 2.3.3 - 2.3.7 APIs</item>
+        <item>Android 2.3 - 2.3.7 APIs</item>
+        <item>Android 3.0 - 3.2.6 APIs</item>
         <item>Android 4.0.3 - 4.0.4 APIs</item>
         <item>Android 4.1 - 4.3 APIs</item>
         <item>Android 4.4 APIs</item>

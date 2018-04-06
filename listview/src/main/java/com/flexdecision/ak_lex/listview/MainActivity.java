@@ -2,7 +2,6 @@ package com.flexdecision.ak_lex.listview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.ActionMode;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.Menu;
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     private void showSelected() {
         DataList list = getSelectedDataItems();
         StringBuilder str = new StringBuilder();
-        for (Data i: list.getItems()){
+        for (DataItem i: list.getItems()){
             str.append(i.getHeadline());
             str.append(", ");
         }
@@ -135,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                             R.drawable.nougat, R.drawable.oreo, R.drawable.android_none};
 
         for(int i=0; i< headlines.length; i++){
-            allData.addData(new Data(headlines[i], descriptions[i], images[i]));
+            allData.addData(new DataItem(headlines[i], descriptions[i], images[i]));
         }
         return allData;
     }
