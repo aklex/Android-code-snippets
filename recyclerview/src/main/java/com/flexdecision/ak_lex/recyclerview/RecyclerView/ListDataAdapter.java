@@ -23,6 +23,7 @@ import com.flexdecision.ak_lex.recyclerview.R;
 public class ListDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public static final String TAG = ListDataAdapter.class.getSimpleName();
     private DataList dataList;
+    private DataList selected;
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView headlineTV;
         private TextView descriptionTV;
@@ -37,8 +38,9 @@ public class ListDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public ListDataAdapter(DataList dataList) {
+    public ListDataAdapter(DataList dataList, DataList selected) {
         this.dataList = dataList;
+        this.selected = selected;
     }
 
     @NonNull
@@ -53,11 +55,16 @@ public class ListDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Data data = dataList.getData(position);
         ViewHolder current = (ViewHolder) holder;
 
-        Log.d(TAG, "" + position + "-" + current.itemView.isSelected());
+        if (selected.contains(data)){
+            current.itemView.setBackgroundColor(Color.CYAN);
+        }else {
+            current.itemView.setBackgroundColor(Color.TRANSPARENT);
+        }
 
         current.headlineTV.setText(data.getHeadline());
         current.descriptionTV.setText(data.getDescription());
         current.androidItemIV.setImageResource(data.getImage());
+
     }
 
     @Override

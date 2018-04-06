@@ -38,7 +38,7 @@ public class ListDataFragment extends Fragment {
     public static final int GRID_LAYOUT = 2;
     private ActionMode actionMode;
     private DataList androidVersions = new DataList();
-    private DataList selected;
+    private DataList selected = new DataList();
 
     public static ListDataFragment newInstance(int layoutType){
         Bundle args = new Bundle();
@@ -70,7 +70,7 @@ public class ListDataFragment extends Fragment {
         listRV.setLayoutManager(layoutManager);
         listRV.setItemAnimator(new DefaultItemAnimator());
         listRV.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        adapterRV = new ListDataAdapter(androidVersions);
+        adapterRV = new ListDataAdapter(androidVersions, selected);
         listRV.setAdapter(adapterRV);
         listRV.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), listRV, new RecyclerClickListener() {
             @Override
@@ -89,7 +89,6 @@ public class ListDataFragment extends Fragment {
                 }
 
                 actionMode = getActivity().startActionMode(actionModeCallback);
-                selected = new DataList();
                 changeState(view, position);
             }
         }));
@@ -102,11 +101,14 @@ public class ListDataFragment extends Fragment {
 
     private void changeState(View view, int position){
         if (selected.contains(androidVersions.getData(position))){
-            view.setBackgroundColor(Color.TRANSPARENT);
+            //view.setBackgroundColor(Color.TRANSPARENT);
             selected.removeData(androidVersions.getData(position));
+            adapterRV.notifyItemChanged(position);
         }else {
-            view.setBackgroundColor(getResources().getColor(R.color.pressed_color));
+            //view.setBackgroundColor(getResources().getColor(R.color.pressed_color));
+            Log.d(TAG, "Set selected: " + position);
             selected.addData(androidVersions.getData(position));
+            adapterRV.notifyItemChanged(position);
         }
     }
 
@@ -187,14 +189,16 @@ public class ListDataFragment extends Fragment {
 
     private void clearSelections() {
         Log.d(TAG, "Clear selections");
-        selected = null;
+        selected.clear();
         adapterRV.notifyDataSetChanged();
     }
 
     private void deleteSelected() {
         Log.d(TAG, "Delete");
         for(Data item: selected.getItems()){
+            int number = androidVersions.getItemNumber(item);
             androidVersions.removeData(item);
+            adapterRV.notifyItemRemoved(number);
         }
     }
 

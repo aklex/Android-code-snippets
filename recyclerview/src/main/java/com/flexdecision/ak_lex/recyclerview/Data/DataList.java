@@ -61,5 +61,9 @@ public class DataList {
         return str.toString();
     }
 
+    public void clear(){
+        items.clear();
+    }
+
 
 }
