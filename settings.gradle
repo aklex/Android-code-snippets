@@ -1,1 +1,1 @@
-include ':app', ':texttospeech', ':noeditableedittext', ':listview', ':fileexplorer', ':zip', ':recyclerview'
+include ':app', ':texttospeech', ':noeditableedittext', ':listview', ':fileexplorer', ':zip', ':recyclerview', ':recycleviewripple'
