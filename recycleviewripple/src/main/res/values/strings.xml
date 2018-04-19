@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">RecycleViewRipple</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search info</string>
+    <string name="title">Android versions</string>
+    <string name="settings">Settings</string>
+
+    <string-array name="version_name">
+        <item>No codename</item>
+        <item>Petit Four</item>
+        <item>Cupcake</item>
+        <item>Donut</item>
+        <item>Eclair</item>
+        <item>Froyo</item>
+        <item>Gingerbread</item>
+        <item>Honeycomb</item>
+        <item>Ice Cream Sandwich</item>
+        <item>Jelly Bean</item>
+        <item>KitKat</item>
+        <item>Lollipop</item>
+        <item>Marshmallow</item>
+        <item>Nougat</item>
+        <item>Oreo</item>
+        <item>P</item>
+    </string-array>
+    <string-array name="version_description">
+        <item>Android 1.0 APIs</item>
+        <item>Android 1.1 APIs</item>
+        <item>Android 1.5 APIs</item>
+        <item>Android 1.6 APIs</item>
+        <item>Android 2.0 – 2.1 APIs</item>
+        <item>Android 2.2 – 2.2.3 APIs</item>
+        <item>Android 2.3 - 2.3.7 APIs</item>
+        <item>Android 3.0 - 3.2.6 APIs</item>
+        <item>Android 4.0.3 - 4.0.4 APIs</item>
+        <item>Android 4.1 - 4.3 APIs</item>
+        <item>Android 4.4 APIs</item>
+        <item>Android 5.0 - 5.1 APIs</item>
+        <item>Android 6.0 APIs</item>
+        <item>Android 7.0 - 7.1 APIs</item>
+        <item>Android 8.0 - 8.1 APIs</item>
+        <item>Android 9.0 APIs</item>
+    </string-array>
+</resources>
